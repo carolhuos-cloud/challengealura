@@ -7,18 +7,8 @@ Original file is located at
     https://colab.research.google.com/drive/1O5Yo0byQ31Tzy-GAkbd5RW-DMQ0bvHk4
 """
 
-!pip install -q langchain
-!pip install -q langchain-community
-!pip install -q langchain-google-genai
-!pip install -q langchain-text-splitters
-!pip install -q sentence-transformers
-!pip install -q faiss-cpu
-!pip install -q pypdf
-!pip install -q gradio
 
 import os
-
-from google.colab import userdata
 
 from langchain_community.document_loaders import PyPDFLoader
 
@@ -34,7 +24,7 @@ import gradio as gr
 
 print("Librerías cargadas")
 
-RUTA_DOCUMENTOS = "/content/Agente_RAG_BimBamBuy/documentos"
+RUTA_DOCUMENTOS = "./documentos"
 
 CHUNK_SIZE = 1000
 CHUNK_OVERLAP = 200
@@ -92,7 +82,12 @@ vectorstore = FAISS.from_documents(
 
 print("Base vectorial creada")
 
-api_key = userdata.get("GEMINI_API_KEY")
+api_key = os.environ.get("GEMINI_API_KEY")
+
+if not api_key:
+    raise Exception(
+        "No se encontró la variable GEMINI_API_KEY"
+    )
 
 os.environ["GOOGLE_API_KEY"] = api_key
 
@@ -170,11 +165,11 @@ RESPUESTA
 
     return limpiar_respuesta(respuesta)
 
-respuesta = responder_usuario(
-    "¿Cómo puedo acceder al envío gratis?"
-)
+# respuesta = responder_usuario(
+#    "¿Cómo puedo acceder al envío gratis?"
+# )
 
-print(respuesta)
+# print(respuesta)
 
 interfaz = gr.Interface(
 
@@ -206,5 +201,6 @@ Consulta información sobre:
 print("✅ Interfaz creada")
 
 interfaz.launch(
-    share=True
+    server_name="0.0.0.0",
+    server_port=7860
 )
