@@ -85,7 +85,6 @@ Usuario
 agente-ia-rag-bimbambuy/
 
 ├── app.py
-├── AgenteIA_BimBamBuy.ipynb
 ├── requirements.txt
 ├── README.md
 ├── .gitignore
