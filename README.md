@@ -2,50 +2,71 @@
 
 ## Descripción
 
-Este proyecto implementa un asistente virtual basado en Inteligencia Artificial para responder consultas de clientes utilizando únicamente la información contenida en documentos PDF de la empresa ficticia **BimBam Buy**.
+Este proyecto implementa un **asistente virtual inteligente basado en Inteligencia Artificial Generativa**, diseñado para responder consultas de clientes utilizando como única fuente de conocimiento documentos oficiales de la empresa ficticia **BimBam Buy**.
 
-El asistente utiliza una arquitectura **RAG (Retrieval-Augmented Generation)**, combinando búsqueda semántica sobre documentos con un modelo de lenguaje para generar respuestas precisas y fundamentadas.
+La solución utiliza una arquitectura **RAG (Retrieval-Augmented Generation)**, combinando recuperación semántica de información con modelos de lenguaje para generar respuestas contextualizadas, precisas y fundamentadas en la documentación disponible.
+
+El asistente permite consultar información relacionada con procesos de compra, pagos, envíos y políticas comerciales, reduciendo la necesidad de búsqueda manual y mejorando la experiencia del usuario.
+
+La solución fue desarrollada utilizando herramientas de Inteligencia Artificial generativa y desplegada en **Oracle Cloud Infrastructure (OCI)** para habilitar su acceso mediante una interfaz web.
 
 ---
 
-## Arquitectura
+# 🏗️ Arquitectura de la solución
 
-El flujo de funcionamiento del sistema es el siguiente:
+El sistema implementa un flujo RAG donde los documentos empresariales son procesados, transformados en representaciones vectoriales y utilizados como fuente de contexto para generar respuestas.
 
 ```
+Documentos PDF
+      │
+      ▼
+Carga y procesamiento
+(PyPDFLoader)
+      │
+      ▼
+Fragmentación de documentos
+(Text Splitter)
+      │
+      ▼
+Generación de embeddings
+(Sentence Transformers)
+      │
+      ▼
+Base vectorial
+(FAISS)
+      │
+      ▼
+Búsqueda semántica
+(Retriever)
+      │
+      ▼
+Modelo de lenguaje
+(Google Gemini Flash Lite)
+      │
+      ▼
+Respuesta contextualizada
+      │
+      ▼
 Usuario
-   │
-   ▼
-Interfaz web (Gradio)
-   │
-   ▼
-Consulta del usuario
-   │
-   ▼
-FAISS (búsqueda semántica)
-   │
-   ▼
-Fragmentos relevantes de los documentos
-   │
-   ▼
-Gemini Flash Lite
-   │
-   ▼
-Respuesta al usuario
 ```
-
-### Componentes
-
-- **PyPDFLoader:** carga los documentos PDF.
-- **RecursiveCharacterTextSplitter:** divide los documentos en fragmentos.
-- **Sentence Transformers:** genera los embeddings.
-- **FAISS:** almacena y busca los fragmentos más relevantes.
-- **Google Gemini Flash Lite:** genera la respuesta utilizando el contexto recuperado.
-- **Gradio:** proporciona una interfaz web sencilla para el usuario.
 
 ---
 
-## Tecnologías utilizadas
+# 🔧 Componentes principales
+
+| Componente | Descripción |
+|---|---|
+| PyPDFLoader | Carga documentos PDF como fuente de conocimiento |
+| RecursiveCharacterTextSplitter | Divide documentos en fragmentos procesables |
+| Sentence Transformers | Genera embeddings para búsqueda semántica |
+| FAISS | Almacena y recupera información relevante |
+| LangChain | Orquesta el flujo RAG |
+| Google Gemini Flash Lite | Genera respuestas utilizando el contexto recuperado |
+| Gradio | Proporciona la interfaz web del asistente |
+
+---
+
+# 🚀 Tecnologías utilizadas
 
 - Python
 - LangChain
@@ -58,9 +79,9 @@ Respuesta al usuario
 
 ---
 
-## Estructura del proyecto
+# 📂 Estructura del proyecto
 
-```text
+```
 agente-ia-rag-bimbambuy/
 
 ├── app.py
@@ -74,21 +95,21 @@ agente-ia-rag-bimbambuy/
 
 ---
 
-## Instalación
+# ⚙️ Instalación
 
 Clonar el repositorio:
 
 ```bash
-git clone https://github.com/TU_USUARIO/agente-ia-rag-bimbambuy.git
+git clone https://github.com/carolhuos-cloud/agente_rag_bimbambuy.git
 ```
 
-Entrar al proyecto:
+Ingresar al proyecto:
 
 ```bash
 cd agente-ia-rag-bimbambuy
 ```
 
-Instalar las dependencias:
+Instalar dependencias:
 
 ```bash
 pip install -r requirements.txt
@@ -104,87 +125,57 @@ python app.py
 
 ---
 
-## Ejemplos de consultas
+# 💬 Ejemplos de consultas
 
-### Pregunta
+## Consulta 1
+
+**Usuario:**
 
 > ¿Cómo puedo acceder al envío gratis?
 
-**Respuesta esperada**
+**Respuesta generada:**
 
-¡Hola! Es un gusto saludarte. Como asistente virtual de BimBam Buy, con gusto te informo sobre cómo funciona el envío gratis en nuestra plataforma:
+El envío gratis puede estar disponible bajo condiciones promocionales o al alcanzar montos mínimos de compra definidos según el país y campaña vigente.
 
-El envío gratis puede estar disponible bajo condiciones promocionales o al alcanzar montos mínimos de compra, los cuales son definidos según el país y la campaña vigente.
-
-Para acceder a este beneficio, ten en cuenta lo siguiente:
-* **Visualización:** El envío gratis se mostrará claramente antes de realizar el pago.
-* **Condiciones:** Puede aplicar únicamente a categorías o regiones determinadas.
-* **Vigencia:** Este beneficio puede tener límites de tiempo o de stock.
-* **Consideración importante:** El envío gratis no cubre necesariamente los costos de reenvío si estos son atribuibles al cliente.
-
-Te recomiendo revisar las promociones vigentes antes de finalizar tu compra para verificar si tu pedido califica para este beneficio. ¡Quedo a tu disposición si tienes alguna otra duda!
+El beneficio será mostrado antes de finalizar la compra, indicando si el pedido cumple las condiciones necesarias.
 
 ---
 
-### Pregunta
+## Consulta 2
+
+**Usuario:**
 
 > ¿Cómo se calcula el costo del envío?
 
-**Respuesta esperada**
+**Respuesta generada:**
 
-¡Hola! Con gusto te explico cómo se determina el costo de envío en BimBam Buy.
+El costo del envío considera factores como:
 
-El costo de tu envío se calcula considerando los siguientes factores:
+- Destino del pedido.
+- Peso y dimensiones del paquete.
+- Servicio de envío seleccionado.
+- Promociones vigentes.
+- Condiciones para acceder al envío gratuito.
 
-*   **Destino:** La ubicación a donde se enviará el paquete.
-*   **Peso volumétrico:** El peso y dimensiones del paquete.
-*   **Tamaño del paquete:** Las medidas físicas del mismo.
-*   **Servicio elegido:** La modalidad de envío seleccionada.
-*   **Promociones vigentes:** Cualquier oferta activa que pueda aplicar.
-*   **Umbral de envío gratis:** Si tu compra califica para envío gratuito según los montos mínimos definidos por país y campaña.
-
-**Información importante:**
-El costo final de tu envío se mostrará siempre antes de que confirmes tu compra, para que tengas total claridad antes de realizar el pago. Ten en cuenta que, en situaciones excepcionales, podría haber una corrección posterior, siempre que esté debidamente justificada.
-
-Si tienes alguna otra duda, ¡estoy aquí para ayudarte!
+El costo final es mostrado antes de confirmar la compra.
 
 ---
 
-### Pregunta
+## Consulta 3
+
+**Usuario:**
 
 > ¿Se puede cambiar el medio de pago de una orden aprobada?
 
-**Respuesta esperada**
+**Respuesta generada:**
 
 No, como regla general, no es posible cambiar el medio de pago de una orden que ya ha sido aprobada.
+
 ---
 
-### Pregunta
+# 🖥️ Demo
 
-> ¿Qué sucede si el pago aparece pendiente?
-
-**Respuesta esperada**
-
-Si tu orden figura como pendiente de pago, esto puede deberse a alguna de las siguientes razones:
-
-*   La confirmación aún está en proceso.
-*   Se está realizando una validación antifraude.
-*   Hubo un error de conexión.
-*   La sesión expiró.
-*   El pago fue iniciado, pero no se finalizó correctamente.
-
-Además, si el estado específico es "pendiente de conciliación", te informamos que estamos revisando el estado de la orden y te confirmaremos la situación cuanto antes.
-
-**Recomendaciones:**
-*   No repitas el pago sin antes revisar el estado de tu orden.
-*   Si necesitas asistencia adicional, puedes contactar a soporte proporcionando los detalles de tu transacción (orden asociada, medio de pago, hora del evento y monto) para que podamos brindarte una respuesta precisa sobre el estado actual, la causa probable y el plazo estimado de resolución.
----
-
-## Capturas
-
-### Interfaz del asistente
-
-Agregar aquí una captura de la aplicación.
+Agregar captura de la interfaz:
 
 ```
 capturas/interfaz.png
@@ -192,26 +183,85 @@ capturas/interfaz.png
 
 ---
 
-## Despliegue en Oracle Cloud Infrastructure (OCI)
+# ☁️ Despliegue en Oracle Cloud Infrastructure (OCI)
 
-Una vez desplegada la aplicación, agregar:
+La solución fue desplegada en una instancia de **Oracle Cloud Infrastructure (OCI)** utilizando un entorno cloud para ejecutar la aplicación Python y disponibilizar la interfaz web del asistente.
 
-- URL pública de OCI.
-
-o
-
-- Captura de pantalla de la aplicación ejecutándose.
-
-Ejemplo:
+La arquitectura de despliegue contempla:
 
 ```
-https://TU-APLICACION.oraclecloudapps.com
+Usuario
+   │
+   ▼
+Interfaz Gradio
+   │
+   ▼
+Instancia Compute OCI
+   │
+   ├── Aplicación Python
+   ├── Arquitectura RAG
+   ├── Modelo IA
+   └── Servicios de recuperación
 ```
+
+## Configuración de infraestructura
+
+- **Cloud Provider:** Oracle Cloud Infrastructure (OCI)
+- **Servicio:** Compute Instance
+- **Sistema operativo:** Oracle Linux
+- **Red:** Virtual Cloud Network (VCN)
+- **Interfaz web:** Gradio
+- **Puerto de aplicación:** 7860/TCP
+
+Para habilitar el acceso externo se configuraron reglas de seguridad en OCI y en el firewall de la instancia:
+
+- Puerto 22/TCP: acceso remoto mediante SSH.
+- Puerto 7860/TCP: acceso a la aplicación web.
+
+La aplicación fue configurada para aceptar conexiones externas mediante:
+
+```python
+demo.launch(
+    server_name="0.0.0.0",
+    server_port=7860
+)
+```
+
+El despliegue permitió ejecutar el agente RAG en la nube y acceder a la solución mediante un navegador web.
 
 ---
 
-## Autor
+# 🔐 Consideraciones para un entorno productivo
+
+Para evolucionar la solución hacia un ambiente empresarial se recomienda:
+
+- Implementar dominio personalizado y HTTPS.
+- Configurar Nginx como proxy inverso.
+- Implementar monitoreo y trazabilidad de consultas.
+
+---
+
+# 🔮 Mejoras futuras
+
+- Incorporar memoria conversacional.
+- Evaluar calidad de respuestas mediante métricas RAG.
+- Implementar historial de consultas.
+- Agregar autenticación y control de acceso.
+- Integrar múltiples fuentes de conocimiento.
+- Implementar observabilidad del agente.
+
+---
+
+# 📌 Resultado
+
+El proyecto demuestra la implementación completa de un asistente virtual basado en arquitectura **RAG**, integrando procesamiento documental, búsqueda semántica, modelos de lenguaje e infraestructura cloud.
+
+La solución evidencia la aplicación práctica de Inteligencia Artificial Generativa en un escenario empresarial, desde la construcción del agente hasta su despliegue en Oracle Cloud Infrastructure.
+
+---
+
+# 👩‍💻 Autor
 
 **Carol Huarancay Osorio**
 
-el proyecto es parte del Challenge AlurAgente en la formación Tech Builder del programa Oracle Next Education (ONE) junto con Alura Latam
+Proyecto desarrollado como parte del **Challenge AlurAgente** de la formación **Tech Builder - Oracle Next Education (ONE) junto con Alura Latam**.
