@@ -176,11 +176,11 @@ No, como regla general, no es posible cambiar el medio de pago de una orden que 
 
 Agregar captura de la interfaz:
 
-```
+
 <p align="center">
   <img src="capturas/Interfaz.png" width="800"/>
 </p>
-```
+
 
 ---
 
