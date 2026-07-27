@@ -231,7 +231,7 @@ demo.launch(
 El despliegue permitió ejecutar el agente RAG en la nube y acceder a la solución mediante un navegador web.
 
 <p align="center">
-  <img src="capturas/arquitectura-oci.png" width="900"/>
+  <img src="capturas/Despliegue1.png" width="900"/>
 </p>
 
 ---
