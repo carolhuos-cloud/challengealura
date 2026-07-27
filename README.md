@@ -230,6 +230,8 @@ demo.launch(
 
 El despliegue permitió ejecutar el agente RAG en la nube y acceder a la solución mediante un navegador web.
 
+Ruta actual: http://147.224.186.208:7860/
+
 <p align="center">
   <img src="capturas/Despliegue1.png" width="900"/>
 </p>
