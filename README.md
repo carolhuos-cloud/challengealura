@@ -177,7 +177,9 @@ No, como regla general, no es posible cambiar el medio de pago de una orden que 
 Agregar captura de la interfaz:
 
 ```
-capturas/interfaz.png
+<p align="center">
+  <img src="capturas/Interfaz.png" width="800"/>
+</p>
 ```
 
 ---
@@ -227,6 +229,10 @@ demo.launch(
 ```
 
 El despliegue permitió ejecutar el agente RAG en la nube y acceder a la solución mediante un navegador web.
+
+<p align="center">
+  <img src="capturas/arquitectura-oci.png" width="900"/>
+</p>
 
 ---
 
