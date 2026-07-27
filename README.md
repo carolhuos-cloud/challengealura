@@ -112,7 +112,17 @@ python app.py
 
 **Respuesta esperada**
 
-BimBam Buy puede ofrecer envío gratis bajo condiciones promocionales o por montos mínimos de compra definidos por país y campaña. Cuando exista este beneficio, se mostrará antes del pago y podrá aplicarse únicamente a determinadas categorías o regiones.
+¡Hola! Es un gusto saludarte. Como asistente virtual de BimBam Buy, con gusto te informo sobre cómo funciona el envío gratis en nuestra plataforma:
+
+El envío gratis puede estar disponible bajo condiciones promocionales o al alcanzar montos mínimos de compra, los cuales son definidos según el país y la campaña vigente.
+
+Para acceder a este beneficio, ten en cuenta lo siguiente:
+* **Visualización:** El envío gratis se mostrará claramente antes de realizar el pago.
+* **Condiciones:** Puede aplicar únicamente a categorías o regiones determinadas.
+* **Vigencia:** Este beneficio puede tener límites de tiempo o de stock.
+* **Consideración importante:** El envío gratis no cubre necesariamente los costos de reenvío si estos son atribuibles al cliente.
+
+Te recomiendo revisar las promociones vigentes antes de finalizar tu compra para verificar si tu pedido califica para este beneficio. ¡Quedo a tu disposición si tienes alguna otra duda!
 
 ---
 
@@ -122,7 +132,21 @@ BimBam Buy puede ofrecer envío gratis bajo condiciones promocionales o por mont
 
 **Respuesta esperada**
 
-El costo del envío depende del destino, peso volumétrico, tamaño del paquete, servicio elegido y las promociones vigentes.
+¡Hola! Con gusto te explico cómo se determina el costo de envío en BimBam Buy.
+
+El costo de tu envío se calcula considerando los siguientes factores:
+
+*   **Destino:** La ubicación a donde se enviará el paquete.
+*   **Peso volumétrico:** El peso y dimensiones del paquete.
+*   **Tamaño del paquete:** Las medidas físicas del mismo.
+*   **Servicio elegido:** La modalidad de envío seleccionada.
+*   **Promociones vigentes:** Cualquier oferta activa que pueda aplicar.
+*   **Umbral de envío gratis:** Si tu compra califica para envío gratuito según los montos mínimos definidos por país y campaña.
+
+**Información importante:**
+El costo final de tu envío se mostrará siempre antes de que confirmes tu compra, para que tengas total claridad antes de realizar el pago. Ten en cuenta que, en situaciones excepcionales, podría haber una corrección posterior, siempre que esté debidamente justificada.
+
+Si tienes alguna otra duda, ¡estoy aquí para ayudarte!
 
 ---
 
@@ -132,8 +156,7 @@ El costo del envío depende del destino, peso volumétrico, tamaño del paquete,
 
 **Respuesta esperada**
 
-No. Como regla general, una orden aprobada no permite cambiar el medio de pago.
-
+No, como regla general, no es posible cambiar el medio de pago de una orden que ya ha sido aprobada.
 ---
 
 ### Pregunta
@@ -142,8 +165,19 @@ No. Como regla general, una orden aprobada no permite cambiar el medio de pago.
 
 **Respuesta esperada**
 
-Puede tratarse de una conciliación en curso o una autorización temporal. Se recomienda esperar la confirmación del estado de la transacción.
+Si tu orden figura como pendiente de pago, esto puede deberse a alguna de las siguientes razones:
 
+*   La confirmación aún está en proceso.
+*   Se está realizando una validación antifraude.
+*   Hubo un error de conexión.
+*   La sesión expiró.
+*   El pago fue iniciado, pero no se finalizó correctamente.
+
+Además, si el estado específico es "pendiente de conciliación", te informamos que estamos revisando el estado de la orden y te confirmaremos la situación cuanto antes.
+
+**Recomendaciones:**
+*   No repitas el pago sin antes revisar el estado de tu orden.
+*   Si necesitas asistencia adicional, puedes contactar a soporte proporcionando los detalles de tu transacción (orden asociada, medio de pago, hora del evento y monto) para que podamos brindarte una respuesta precisa sobre el estado actual, la causa probable y el plazo estimado de resolución.
 ---
 
 ## Capturas
@@ -180,4 +214,4 @@ https://TU-APLICACION.oraclecloudapps.com
 
 **Carol Huarancay Osorio**
 
-Proyecto desarrollado como parte del curso de Agentes de Inteligencia Artificial.
+el proyecto es parte del Challenge AlurAgente en la formación Tech Builder del programa Oracle Next Education (ONE) junto con Alura Latam
